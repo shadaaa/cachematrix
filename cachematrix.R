@@ -2,12 +2,12 @@
 ## functions do
 
 ## Write a short comment describing this function
-
+## creating makeCacheMatrix to cache the inverse
 makeCacheMatrix <- function(x = matrix()) {
   inv <- NULL
   set <- function(y) {
-    x <<- y
-    inv <<- NULL
+    x <<- y ## #cache "x" matrix in the variable "y" outside current work environnment
+    inv <<- NULL #cache the values in "inv" outside current work environment. 
   }
   get <- function() x
   setInverse <- function(inverse) inv <<- inverse
@@ -21,6 +21,10 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 ## Write a short comment describing this function
+##computes inverse of a special matrix
+##if inverse have already computed, then it will skip computation.
+##If not, it computes the inverse, sets the value in the cache via
+## setinverse function.
 
 cacheSolve <- function(x, ...) {
   inv <- x$getInverse()
